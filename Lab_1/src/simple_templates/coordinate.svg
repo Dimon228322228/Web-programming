@@ -1,0 +1,52 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" class="coordinates">
+  <!-- X-Axis -->
+    <line class="axis" x1="0" y1="100" x2="200" y2="100" stroke="black" />
+    <polygon points="200,100 190,98 190,102"/>
+
+    <!-- Y-Axis -->
+    <line class="axis" x1="100" y1="0" x2="100" y2="200" stroke="black" />      
+    <polygon points="100,0 98,10 102,10"/>
+
+    <!-- X-Axis coordinates-->
+    <line class="coordinate-line" x1="20" y1="98" x2="20" y2="102" stroke="black" />
+    <text class="coordinate-text" x="13" y="97" font-size="8">-R</text>
+
+    <line class="coordinate-line" x1="60" y1="98" x2="60" y2="102" stroke="black" />
+    <text class="coordinate-text" x="53" y="97" font-size="8">-R/2</text>
+
+    <line class="coordinate-line" x1="140" y1="98" x2="140" y2="102" stroke="black" />
+    <text class="coordinate-text" x="133" y="97" font-size="8">R/2</text>
+
+    <line class="coordinate-line" x1="180" y1="98" x2="180" y2="102" stroke="black" />
+    <text class="coordinate-text" x="177" y="97" font-size="8">R</text>
+
+    <!-- Y-Axis coordinates-->
+    <line class="coordinate-line" x1="98" y1="20" x2="102" y2="20" stroke="black" />
+    <text class="coordinate-text" x="103" y="23" font-size="8">R</text>
+
+    <line class="coordinate-line" x1="98" y1="60" x2="102" y2="60" stroke="black" />
+    <text class="coordinate-text" x="103" y="63" font-size="8">R/2</text>
+
+    <line class="coordinate-line" x1="98" y1="140" x2="102" y2="140" stroke="black" />
+    <text class="coordinate-text" x="102" y="142" font-size="8">-R/2</text>
+
+    <line class="coordinate-line" x1="98" y1="180" x2="102" y2="180" stroke="black" />
+    <text class="coordinate-text" x="102" y="183" font-size="8" 
+    >-R</text>
+
+    <!-- Triangle -->
+    <polygon points="60,100 100,100 100,180" fill="red" fill-opacity=".3" stroke-opacity=".3"
+    class="triangle"/>
+
+    <!-- Rectangle -->
+    <polygon points="100,100 140,100 140,180 100,180" fill="red" fill-opacity=".3"
+    stroke-opacity=".3"
+    class="rectangle"/>
+
+    <!-- Quater cercle -->
+    <path d="M60,100 
+             A40,40 90 0 1 100,60 L100, 100"
+    fill="red" fill-opacity=".3"
+    stroke-opacity=".3"
+    class="quater-cercle"/>
+</svg>

@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  color: rgb(0, 56, 139);  
+  font-size: 28px;
+  margin: 10px 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+canvas{
+  border: 1px solid #000000;
+  margin: 10px 20px;
+  padding: 20px;
+}
