@@ -1,0 +1,12 @@
+@import "./styles/input_style.scss";
+p {
+  color: red;
+  margin: 0;
+}
+.cont{
+  margin-bottom: 20px; 
+  @import "./styles/text.scss";
+  input{
+    outline: none;
+  }
+}

@@ -1,0 +1,44 @@
+div{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  background-color: rgb(219, 148, 54);
+  color: rgb(107, 75, 34);  
+  font-size: 28px;
+  padding: 10px 5px; 
+  margin: 10px 20px;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: 20px;
+  position: relative;
+  span{
+    padding-left: 20px;
+  }
+  .group,
+  .variant{
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+  // &::before{
+  //   content: "";
+  //   background: linear-gradient(90deg, rgb(41, 34, 107) 50%, rgb(145, 54, 219) 100%);
+  //   z-index: -1;
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   opacity: 0;
+  //   transition: opacity 0.3s ease-out;
+  // }
+
+
+  &:hover{
+    .group,
+    .variant{
+      opacity: 1;
+    }
+    // &::before{
+    //   opacity: 1;
+    // }
+  }
+}
