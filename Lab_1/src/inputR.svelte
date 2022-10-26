@@ -1,10 +1,20 @@
 <script>
+  import { r } from "./store.js";
+
   $: tip = false;
   $: values = [{ v: 1, check: true},
                { v: 2, check: false},
                { v: 3, check: false},
                { v: 4, check: false},
                { v: 5, check: false}];
+  export const getR = function getR(){
+    values.forEach(element => {
+      if (element.check){
+        return element.v;
+      }
+    }); 
+  }
+
   function update( x ){
     console.log(x);
     values.forEach((item) => {
@@ -21,7 +31,7 @@
     values = [...values];
   }
 </script>
-<div class="cont">
+<div class="cont_r">
   <p>Выберите радиус:</p>
   <div class="inputs">
     {#each values as item}
@@ -30,6 +40,7 @@
       </label>    
       <input type=checkbox name={ item.v }
               bind:checked={item.check}
+              bind:value={$r}
               on:change={ e => update(e.target.name) }>
               
     </div> 

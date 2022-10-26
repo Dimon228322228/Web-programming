@@ -1,24 +1,24 @@
 @import "./styles/input_style.scss";
 
-  .inputs{
-    display: flex;
-    justify-content: center;
-    label {
-      margin: 0 5px;
-      @import "./styles/text.scss";
-    }
+.inputs{
+  display: flex;
+  justify-content: center;
+  label {
+    margin: 0 5px;
+    @import "./styles/text.scss";
   }
-  .cont{
-    display: flex;
-    flex-direction: column;
-    margin: 15px 20px;
-    p{
-      margin: 0 0 5px 0;
-      @import "./styles/text.scss";
-      
-    }
-    .tip{
-        color: red;
-        margin: 0;
-    }
+}
+.cont_r{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  p{
+    margin: 0 0 5px 0;
+    @import "./styles/text.scss";
+    
   }
+  .tip{
+      color: red;
+      margin: 0;
+  }
+}

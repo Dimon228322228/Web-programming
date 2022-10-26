@@ -1,0 +1,44 @@
+main {
+  text-align: center;	
+  max-width: 240px;
+  margin: 0 auto;
+  background-color: burlywood;
+  .main_content{
+    display: flex;
+    justify-content: space-evenly;
+    .right_side{
+      .input_data{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .x_and_r{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 20px 0;
+          .x{
+            margin: 0 10px;
+          }
+          .r{
+            margin: 0 10px;
+          }
+        }
+        .y{
+          margin-bottom: 20px;
+        }
+        .buttons{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  main {
+    max-width: none;
+  }
+}

@@ -1,12 +1,18 @@
-@import "./styles/input_style.scss";
-p {
-  color: red;
-  margin: 0;
+.error{
+  p {
+    color: red;
+    margin: 0;
+  }
 }
-.cont{
-  margin-bottom: 20px; 
+.cont_y{
+  display: flex;
+  flex-direction: column;
+  @import "./styles/input_style.scss";
   @import "./styles/text.scss";
   input{
     outline: none;
+  }
+  p{
+    margin: 0 0 10px 0;
   }
 }

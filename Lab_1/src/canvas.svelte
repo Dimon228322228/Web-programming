@@ -5,6 +5,8 @@
   onMount(() => {
     drawing(canvas);
   });
+  let is_in_area = false;
+  $: cursor = is_in_area ? 'crosshair' : 'default';
   function culc( e ) {
       let rect = canvas.getBoundingClientRect();
       let x_0 = rect.left + (rect.right - rect.left) / 2;
@@ -15,7 +17,10 @@
 </script>
 
 <canvas width="400" height="400" bind:this={ canvas }
-        on:mousemove={ (e) => { culc(e) } }></canvas>
+        style:cursor
+        on:mousemove={ (e) => { culc(e) } }
+        on:mouseenter={ () => { is_in_area = true; } }
+        on:mouseleave={ () => { is_in_area = false; } }></canvas>
 
 <style lang="scss">
   @import "./styles/canvas.scss";
