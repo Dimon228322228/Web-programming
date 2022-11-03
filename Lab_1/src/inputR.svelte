@@ -7,16 +7,8 @@
                { v: 3, check: false},
                { v: 4, check: false},
                { v: 5, check: false}];
-  export const getR = function getR(){
-    values.forEach(element => {
-      if (element.check){
-        return element.v;
-      }
-    }); 
-  }
 
   function update( x ){
-    console.log(x);
     values.forEach((item) => {
       if (x != item.v){
         item.check = false;
@@ -27,7 +19,10 @@
       if ( item.check ) count++;
     });
     if (!count) tip = true;
-    else tip = false;
+    else {
+      tip = false;
+      r.set(Number(x));
+    }
     values = [...values];
   }
 </script>
@@ -40,7 +35,6 @@
       </label>    
       <input type=checkbox name={ item.v }
               bind:checked={item.check}
-              bind:value={$r}
               on:change={ e => update(e.target.name) }>
               
     </div> 

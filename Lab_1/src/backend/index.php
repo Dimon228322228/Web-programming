@@ -42,7 +42,7 @@
     $current_time = date("H:i:s", time());
     $execution_time = round(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 5);
 
-      $data = [
+    $data = [
       "x" => $x,
       "y" => $y,
       "r" => $R,

@@ -37,6 +37,10 @@ main {
   }
 }
 
+.cursor_cross{
+  cursor: crosshair;
+}
+
 @media (min-width: 640px) {
   main {
     max-width: none;

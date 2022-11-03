@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "dev": "rollup -c -w && cd ./public/ && php -S localhost:8080 && cd ..",
     "start": "sirv public --no-clear"
   },
   "devDependencies": {

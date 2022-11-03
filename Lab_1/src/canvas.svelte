@@ -1,26 +1,25 @@
 <script>
-  import { onMount } from "svelte";
-  import { drawing } from "./canvas";
-  let canvas;
-  onMount(() => {
-    drawing(canvas);
+  import { onMount, getContext } from "svelte";
+
+  let wrapper;
+  let canv = getContext('canvas').canvas;
+  onMount(()=>{
+    wrapper.appendChild(canv)
   });
-  let is_in_area = false;
-  $: cursor = is_in_area ? 'crosshair' : 'default';
-  function culc( e ) {
-      let rect = canvas.getBoundingClientRect();
-      let x_0 = rect.left + (rect.right - rect.left) / 2;
-      let y_0 = rect.top + (rect.bottom - rect.top) / 2;
-      let current_x = e.clientX - x_0;// this is relative by center canvas coordinate
-      let current_y = y_0 - e.clientY; // this is relative by center canvas coordinate
-  }
+  
+  
+  // function culc() {
+  //     let rect = canvas.getBoundingClientRect();
+  //     x_0 = rect.left + (rect.right - rect.left) / 2;
+  //     y_0 = rect.top + (rect.bottom - rect.top) / 2;
+  // }
+  // function get_current_coordinate(e){
+  //   current_x = e.clientX - x_0;// this is relative by center canvas coordinate
+  //   current_y = y_0 - e.clientY; // this is relative by center canvas coordinate
+  // }
 </script>
 
-<canvas width="400" height="400" bind:this={ canvas }
-        style:cursor
-        on:mousemove={ (e) => { culc(e) } }
-        on:mouseenter={ () => { is_in_area = true; } }
-        on:mouseleave={ () => { is_in_area = false; } }></canvas>
+<div bind:this={wrapper} class="canv_wrapper"></div>
 
 <style lang="scss">
   @import "./styles/canvas.scss";

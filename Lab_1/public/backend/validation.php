@@ -1,10 +1,10 @@
 <?php
 
-require_once "Circle.php";
-require_once "Graph.php";
-require_once "Square.php";
-require_once "Shape.php";
-require_once "Triangle.php";
+require_once "circle.php";
+require_once "graph.php";
+require_once "square.php";
+require_once "shape.php";
+require_once "triangle.php";
 
 class Validator{
   private Graph $graph;
