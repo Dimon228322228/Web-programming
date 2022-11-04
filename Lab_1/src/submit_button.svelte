@@ -1,20 +1,14 @@
 <script>
-  import { table } from "./store.js";
-  import { r } from "./store.js";
-  import { x } from "./store.js";
-  import { y } from "./store.js";
+  import { getContext } from "svelte";
+  import { Vector } from "./util/vector.js";
+  let input_model = getContext('input_model');
+  let canvas_controller = getContext('canvas').canvas_controller;
+  let callback = canvas_controller.redraw_canvas.bind(canvas_controller);
 
-  const API_URL = "./backend/index.php";
-  async function getData(){
-    const response = await fetch(API_URL+ "?" + new URLSearchParams({
-      x: $x,
-      y: $y,
-      r: $r
-    }));
-    const data = (await response.json());
-    table.set(data);
-    drow_dots(table);
+  function getData(){
+    input_model.requestData( new Vector( input_model.x, input_model.y ), callback );
   }
+
 </script>
 <button on:click={ () => { getData(); } }>
   <p>Отправить</p>

@@ -2,7 +2,7 @@
   import { table, count } from "./store.js";
   function getCount(){
     count.update(n => n + 1);
-    return $count;    
+    return $count;
   }
 </script>
 <div class="table_wrap">
@@ -17,7 +17,17 @@
       <th>Время выполнения</th>
     </thead>
     <tbody>
-     {@html $table}
+      {#each $table as item}
+        <tr>  
+          <td>{getCount()}</td>
+          <td>{item.x}</td>
+          <td>{item.y}</td>
+          <td>{item.r}</td>
+          <td>{item.isHit}</td>
+          <td>{item.current_time}</td>
+          <td>{item.execution_time}</td>
+        </tr>
+    {/each}
     </tbody>
   </table>
 </div>

@@ -1,15 +1,14 @@
 <script>
-import { table } from "./store.js";
-async function reset_data(){
-  const API_URL = "./backend/reset_session.php";
-  const response = await fetch(API_URL);
-  console.log(await response);
-  table.set([]);
-  drow_dots(table);
-}
+  import { getContext } from 'svelte';
+  let input_model = getContext('input_model');
+  let canvas_controller = getContext('canvas').canvas_controller;
+  function reset(){
+    input_model.resetData();
+    canvas_controller.redraw_canvas( input_model.table );
+  }
 </script>
 
-<button on:click={ () => reset_data() }>
+<button on:click={ () => reset() } >
   <p>Сбросить</p>
 </button>
 

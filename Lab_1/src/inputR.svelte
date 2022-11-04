@@ -1,5 +1,8 @@
 <script>
-  import { r } from "./store.js";
+  import { getContext } from "svelte";
+
+  let input_model = getContext('input_model');
+  let canvas_controller = getContext('canvas').canvas_controller;
 
   $: tip = false;
   $: values = [{ v: 1, check: true},
@@ -9,19 +12,15 @@
                { v: 5, check: false}];
 
   function update( x ){
-    values.forEach((item) => {
-      if (x != item.v){
-        item.check = false;
-      } 
-    });
+    values.forEach( item => { item.check = x == item.v ? true : false } );
     let count = 0;
-    values.forEach((item) => {
-      if ( item.check ) count++;
-    });
+    values.forEach( item => { count = item.check ? count + 1 : count} );
     if (!count) tip = true;
     else {
       tip = false;
-      r.set(Number(x));
+      input_model.r = Number(x);
+      let update_canvas = canvas_controller.update_scale.bind(canvas_controller);
+      update_canvas();
     }
     values = [...values];
   }
@@ -35,8 +34,7 @@
       </label>    
       <input type=checkbox name={ item.v }
               bind:checked={item.check}
-              on:change={ e => update(e.target.name) }>
-              
+              on:change={ e => update(e.target.name) }>  
     </div> 
   {/each}
   </div>
@@ -45,6 +43,6 @@
   {/if}
 </div>
 
-<style lang="scss" global>
+<style lang="scss">
   @import "./styles/inputR.scss";
 </style>

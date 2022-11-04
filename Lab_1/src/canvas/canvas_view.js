@@ -12,7 +12,6 @@ export class CanvasView{
     this.canvasDrawer.drawBackground( this.canvasDimention/this.intervalsNumber, unitR );
   }
 
-
   clear(){
     this.canvasDrawer.clearCanvas();
     this.canvasDrawer.drawBackground( this.canvasDimention / this.intervalsNumber, this.unitR );
@@ -28,10 +27,6 @@ export class CanvasView{
     this.canvasDrawer.drawPoint( dot );
   }
 
-  bindClick = (handler) => {
-    this.canvas.addEventListener( "click", handler );
-  }
-
   get canvasDimention(){
     return this._canvasDimention;
   }
@@ -42,5 +37,9 @@ export class CanvasView{
 
   get unitR(){
     return this._unitR;
+  }
+
+  set unitR( value ){
+    this._unitR = value;
   }
 }

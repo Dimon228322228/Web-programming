@@ -100,9 +100,9 @@ export class canvasDrawer{
     this.ctx.stroke(dashes);
 
     let unsign_strR = `${ unitR }`;
-    let sign_strR = `${ -unitR }`;
+    let sign_strR = `${ - unitR }`;
     let half_unsign_strR = `${ unitR / 2 }`;
-    let half_sign_strR = `${ -unitR / 2 }`;
+    let half_sign_strR = `${ - unitR / 2 }`;
     let height_text = getHeightText(unsign_strR).height;
     this.ctx.textBaseLine = 'top';
     this.ctx.textAlign = 'center';
@@ -117,11 +117,11 @@ export class canvasDrawer{
         (this.width / 2) + this.ctx.measureText(sign_strR).width * 1.2,
         (this.height / 2) + unitRSizePx + (height_text / 4) );
     this.ctx.fillText( half_unsign_strR,
-        (this.width / 2) + 8,
-        (this.height / 2) - (unitRSizePx / 2) - (height_text / 2) );
+        (this.width / 2) + this.ctx.measureText(half_unsign_strR + " ").width,
+        (this.height / 2) - (unitRSizePx / 2) + (height_text / 4) );
     this.ctx.fillText( unsign_strR,
-        (this.width / 2) + 8,
-        (this.height / 2) - unitRSizePx - (height_text / 2) );
+        (this.width / 2) + this.ctx.measureText(unsign_strR + " ").width,
+        (this.height / 2) - unitRSizePx + (height_text / 4) );
     this.ctx.fillText( "X",  this.width - this.ctx.measureText("X").width / 2, (this.height / 2) - 10 );
     this.ctx.fillText( "Y", (this.width / 2) + this.ctx.measureText("X").width, 10 );    
   }

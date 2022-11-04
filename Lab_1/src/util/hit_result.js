@@ -1,9 +1,11 @@
 export class HitResult {
-  constructor(x, y, r, isHit) {
+  constructor(x, y, r, isHit, current_time, execution_time) {
       this._x = x;
       this._y = y;
       this._r = r;
-      this.isHit = isHit;
+      this._isHit = isHit;
+      this._current_time = current_time;
+      this._execution_time = execution_time;
   }
 
   get x () {
@@ -19,6 +21,14 @@ export class HitResult {
   }
 
   get isHit () {
-    return this.isHit;
+    return this._isHit;
+  }
+
+  get current_time () {
+    return this._current_time;
+  }
+
+  get execution_time () {
+    return this._execution_time;
   }
 }

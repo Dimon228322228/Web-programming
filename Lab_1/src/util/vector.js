@@ -23,8 +23,11 @@ export class Vector{
   }
 
   scaleFromPx(unitRSizePx, unitR){
-    this._x /= unitRSizePx * unitR;
-    this._y /= unitRSizePx * unitR;
+    this._x /= unitRSizePx
+    this._x *= unitR;
+    this._y /= unitRSizePx;
+    this._y *= unitR;
+
   }
 
   shiftToAxisCenter(offset){

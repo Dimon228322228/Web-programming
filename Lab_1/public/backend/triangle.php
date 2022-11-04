@@ -12,17 +12,15 @@ class Triangle extends Shape
     parent::__construct($quadrant);
     $this->x = $x;
     $this->y = $y;
+    if ($this->quadrant == 3 || $this->quadrant == 4) { $this->low_quadrant = TRUE; } 
   }  
 
   public function isInShape(float $x, float $y): bool
   {
-    if ($this->quadrant == 3 || $this->quadrant == 4) {
-      $this->low_quadrant = TRUE;
-    } 
     if ($this->low_quadrant){
-      return $this->isInQuadrant($x, $y) && ($y >= ( -2 * $x - $this->x));
+      return $this->isInQuadrant($x, $y) && ($y >= ( (-$this->y/$this->x) * $x + $this->y));
     } else {
-      return $this->isInQuadrant($x, $y) && ($y <= ( -2 * $x + $this->x));
+      return $this->isInQuadrant($x, $y) && ($y <= ( (-$this->y/$this->x) * $x + $this->y));
     }
   }
 
