@@ -31,9 +31,9 @@
       return;
     }
 
-    $x = toFixed($user_x, 2);
-    $y = toFixed($user_y, 2);
-    $R = toFixed($user_R, 2);
+    $x = toFixed($user_x, 4);
+    $y = toFixed($user_y, 4);
+    $R = toFixed($user_R, 4);
 
     $validator = new Validator();
     $isValid = $validator->isPointInShape($x, $y, $R) ? "true" : "false";

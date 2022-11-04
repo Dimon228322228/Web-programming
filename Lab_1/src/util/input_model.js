@@ -32,9 +32,9 @@ export class InputModel{
 
       for (let i = 0; i < tableElement.rows.length; i++) {
           valueRows.push(new HitResult(
-              +(xRow[i]).innerText.trim(),
-              +(yRow[i]).innerText.trim(),
-              +(rRow[i]).innerText.trim(),
+              (+(xRow[i]).innerText.trim()).toFixed(2),
+              (+(yRow[i]).innerText.trim()).toFixed(2),
+              (+(rRow[i]).innerText.trim()).toFixed(2),
               (isHitRow[i]).innerText.trim() === "true",
               current_time_table_value[i].innerText.trim(),
               execution_time_table_value[i].innerText.trim()
