@@ -9,7 +9,7 @@ if (!isset($_SESSION['hit_results'])) {
 
 function output_results(): void
 {
-    header( 'Content-Type: application/json; charset=utf-8' );
+    header( 'Content-Type: text/html; charset=utf-8' );
     $response_data = $_SESSION["hit_results"];
     foreach ($response_data as $data_entry) {
         ?>
