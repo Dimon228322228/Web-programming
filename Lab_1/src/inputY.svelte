@@ -7,11 +7,11 @@
   let input;
 
   onMount(() => {
-    input.setAttribute('title', '!! -3 < y < 5 !! To enter float number use a dot.')
+    input.setAttribute('title', '!! -3 < y < 5 !! Enter a number to the nearest 0.0001. To enter float number use a dot. ')
   });
 
   function isInRange(value, min, max){
-    return isNumber(value) && (value > min && value < max);
+    return isNumber(value) && (value >= min && value <= max);
   }
   function isNumber( value ){
     return !Number.isNaN(value);
