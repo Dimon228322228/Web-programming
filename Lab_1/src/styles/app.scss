@@ -37,6 +37,16 @@ main {
   }
 }
 
+:global(#tip){
+  background-color: burlywood;
+  border: 2px solid rgb(185, 95, 11);
+  border-radius: 8px;
+  position: absolute;
+  opacity: 0;
+  left: -150px;
+  top: -30px;
+}
+
 @media (min-width: 640px) {
   main {
     max-width: none;

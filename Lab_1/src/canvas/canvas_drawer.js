@@ -1,19 +1,36 @@
 import { getHeightText } from "../util/calc_height.js";
+import { Vector } from "../util/vector.js";
 
 export class canvasDrawer{
 
-  constructor( canvas ){
+  constructor( canvas, tip_canv ){
     this.canvas = canvas;
+    this.tip_canvas = tip_canv;
     this.ctx = canvas.getContext('2d');
+    this.tip_ctx = this.tip_canvas.getContext('2d');
     this.height = this.canvas.height;
     this.width = this.canvas.width;
+    this._radius = 5;
+  }
+
+  get radius() {
+    return this._radius;
   }
 
   drawPoint( dot ) {
     let dotCircle = new Path2D();
-    dotCircle.arc( dot.x, dot.y, 3, 0, 2 * Math.PI );
+    dotCircle.arc( dot.x, dot.y, this._radius, 0, 2 * Math.PI );
     this.ctx.fillStyle = dot.color;
     this.ctx.fill(dotCircle);
+  }
+
+  drawTip( dot, vector ){
+    this.tip_canvas.style.left = (vector.x) + "px";
+    this.tip_canvas.style.top = (vector.y - 20) + "px";
+    this.tip_ctx.clearRect(0, 0, this.tip_canvas.width, this.tip_canvas.height);
+    this.tip_ctx.font = "14px sans-serif";
+    this.tip_ctx.fillStyle=`rgb(${185/4}, ${95/4}, ${11*10})`;
+    this.tip_ctx.fillText(` X: ${dot.x}; Y: ${dot.y}; R: ${dot.r}; `, 5, 20);
   }
 
   clearCanvas() {
@@ -78,7 +95,7 @@ export class canvasDrawer{
   }
 
   drawText( unitRSizePx, unitR ){
-    this.ctx.font = "14px serif";
+    this.ctx.font = "14px sans-serif";
     this.ctx.fillStyle = '#000';
     let dashes = new Path2D();
     dashes.moveTo( (this.width / 2) - (unitRSizePx / 2), (this.height / 2) + 5 );

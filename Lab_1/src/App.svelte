@@ -5,17 +5,23 @@
   import { InputModel } from './util/input_model.js';
 	import { setContext } from "svelte";
 	let canv = document.createElement('canvas');
-	canv.height = 400;
-	canv.width = 400;
+	let tip_canv = document.createElement('canvas');
+	tip_canv.setAttribute('id', 'tip');
+	canv.height = 600;
+	canv.width = 600;
+	tip_canv.height = 30;
+	tip_canv.width = 150;
 	let input_model = new InputModel();
-	let canvas_view = new CanvasView( canv, input_model.r );
+	let canvas_view = new CanvasView( canv, tip_canv, input_model.r );
   let canvas_controller = new CanvasController( canvas_view, input_model );
 	canv.addEventListener('click', (event) => { canvas_controller.request_data(event), true } );
+	canv.addEventListener('mousemove', (event) => { canvas_controller.handleMouseMove(event), true } );
 	
 	setContext( 'canvas', {
 		canvas: canv,
 		canvas_view: canvas_view,
-		canvas_controller: canvas_controller
+		canvas_controller: canvas_controller,
+		tip_canv: tip_canv
 	} );
 	setContext( 'input_model', input_model);
 

@@ -1,43 +1,44 @@
 <script>
+  import { onMount } from "svelte";
   import { y } from "./store.js";
   let tip = false;
-  let count_dot = 0;
   $: $y = 0;
   let previous = 0;
-  function checking( e ){ 
-    if ( e.key == "." && !String(previous).includes('.') ) {
-      count_dot++;
+  let input;
+
+  onMount(() => {
+    input.setAttribute('title', '!! -3 < y < 5 !! To enter float number use a dot.')
+  });
+
+  function isInRange(value, min, max){
+    return isNumber(value) && (value > min && value < max);
+  }
+  function isNumber( value ){
+    return !Number.isNaN(value);
+  }
+
+  function checking(){ 
+    if ( !isInRange( $y, -3, 5 ) ){
+      $y = previous;
       return;
     }
-    if ( e.keyCode >= 48 && e.keyCode <= 57 || e.keyCode == 8 || (e.keyCode == 189 && previous === '') ) $y = e.target.value;
-    else $y = Number(previous);
-    if ( e.keyCode == 38 ) $y = ( Number( $y ) + 1 ).toFixed(4);
-    if ( e.keyCode == 40 ) $y = ( Number( $y ) - 1 ).toFixed(4);
-    if ( +$y > 5.0 ) $y = 5;
-    if ( +$y < -3.0 ) $y = -3;
-    if ( $y === '' ) tip = true;
-    else {
+    if ( $y === '' ) {
+      tip = true;
+    } else {
       tip = false;
-      if ( (Number($y) * 10000) - Math.trunc(Number($y) * 10000) > 0 ){
-        $y = Number( $y ).toFixed(4);
-      }
+      previous = Number($y);
+      return;
     }
-    previous = $y;
   }
 </script>
 <div class="cont_y">
   <p>Введите Y:</p>
-<input type="text" 
-       bind:value = {$y} 
-       min="-3" 
-       max="5" 
-       on:keyup={ (e) => { checking(e)} }
-       />
-{#if tip}
-<div class="error">
-  <p>Вы ничего не ввели!</p>
-</div>
-{/if}
+  <input bind:this={input} type="text" bind:value = {$y} on:input={ (e) => { checking(e)} } />
+  {#if tip}
+    <div class="error">
+      <p>Вы ничего не ввели!</p>
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">

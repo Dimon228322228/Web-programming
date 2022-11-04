@@ -12,6 +12,28 @@ export class CanvasController{
     this._inputModel.requestData( vector, callback );
   }
 
+  handleMouseMove( event ){
+    let mouseX = event.offsetX;
+    let mouseY = event.offsetY;
+    for (let i = 0; i < this._inputModel.table.length; i++) {
+        let dot = this._inputModel.table[i];
+        let vector = new Vector( dot.x, dot.y );
+        vector.fromUnitsToPx( this.canvasView.canvasDimention / this.canvasView.intervalsNumber, this.canvasView.canvasDimention / 2, this.canvasView.unitR );
+        let dx = mouseX - vector.x;
+        let dy = mouseY - vector.y;
+        if (dx * dx + dy * dy < this._canvasView.rDot) {
+            this._canvasView.drawTip( dot );
+            let hide_tip = this.hide_tip.bind(this);
+            setTimeout( hide_tip , 3000);
+        }
+    }
+  }
+
+  hide_tip(){
+    this._canvasView.tip_canvas.style.left = '-200px';
+    this._canvasView.tip_canvas.style.opacity = 0;
+  }
+
   _redraw_canvas( canvasView, table ){
     canvasView.clear();
     let callback = canvasView.addPoint.bind(canvasView);
