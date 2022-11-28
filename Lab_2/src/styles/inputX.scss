@@ -1,0 +1,13 @@
+@import './styles/input_style.scss';
+.inputs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+.inputs input{
+  margin: 0 8px;
+}
+.cont_x{
+  @import "./styles/text.scss";
+  margin: 0;
+}

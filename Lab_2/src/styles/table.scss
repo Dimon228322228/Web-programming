@@ -1,0 +1,21 @@
+$color_header: rgb(182, 111, 44);
+$color_cell: rgb(226, 152, 83);
+
+.table_wrap{
+  table{
+    border-spacing: 0;
+    border-collapse: collapse;
+    th{
+      padding: 25px;
+      margin: 0;
+      border: 2px solid $color_header;
+    }
+    td{
+      padding: 25px;
+      margin: 0;
+      border: 2px solid $color_cell;
+    }
+  }
+  overflow-y: scroll;
+  max-height: 300px;
+}

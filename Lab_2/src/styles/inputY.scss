@@ -1,0 +1,18 @@
+.error{
+  p {
+    color: red;
+    margin: 0;
+  }
+}
+.cont_y{
+  display: flex;
+  flex-direction: column;
+  @import "./styles/input_style.scss";
+  @import "./styles/text.scss";
+  input{
+    outline: none;
+  }
+  p{
+    margin: 0 0 10px 0;
+  }
+}
