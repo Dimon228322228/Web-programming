@@ -1,0 +1,23 @@
+public abstract class AbstractShape implements ShapeInterface {
+
+  protected Integer quadrant;
+
+  public AbstractShape( Integer quadrant ){
+    this.quadrant = quadrant;
+  }
+
+  public abstract Boolean isInShape( Float x, Float y );
+
+  protected Boolean isInQuadrant( Float x, Float y )
+  {
+    if (x >= 0 && y >= 0 && this.quadrant == 1){
+      return true;
+    } else if (x <= 0 && y >= 0 && this.quadrant == 2){
+      return true;
+    } else if (x <= 0 && y <= 0 && this.quadrant == 3){
+      return true;
+    } else if (x >= 0 && y <= 0 && this.quadrant == 4){
+      return true;
+    } else return false;
+  }
+}
