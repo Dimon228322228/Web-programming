@@ -1,6 +1,7 @@
 /node_modules/
-/public/build/
+/_public/build/
 
 .DS_Store
 /.vscode/
 .idea/
+.gradle/

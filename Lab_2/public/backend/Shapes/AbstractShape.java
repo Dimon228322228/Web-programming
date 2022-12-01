@@ -1,3 +1,5 @@
+package Shapes;
+
 public abstract class AbstractShape implements ShapeInterface {
 
   protected Integer quadrant;
