@@ -1,3 +1,4 @@
+package Shape;
 public class Triangle extends AbstractShape{
 
   private Float x;

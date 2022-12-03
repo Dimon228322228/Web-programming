@@ -1,3 +1,4 @@
+package Shapes;
 public class Square extends AbstractShape{
 
   private Float x;
