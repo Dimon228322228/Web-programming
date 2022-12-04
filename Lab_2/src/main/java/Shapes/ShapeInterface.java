@@ -1,5 +1,5 @@
 package Shapes;
 
-interface ShapeInterface{
-  Boolean isInShape( Float x, Float y );
+public interface ShapeInterface{
+  boolean isInShape( double x, double y );
 }

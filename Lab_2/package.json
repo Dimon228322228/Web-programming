@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w && cd ./_public/ && php -S localhost:8080 && cd ..",
-    "start": "sirv public --no-clear"
+    "dev": "rollup -c -w ",
+    "start": "sirv ./src/main/webapp/public --no-clear"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",

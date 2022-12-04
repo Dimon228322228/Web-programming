@@ -8,9 +8,9 @@ public abstract class AbstractShape implements ShapeInterface {
     this.quadrant = quadrant;
   }
 
-  public abstract Boolean isInShape( Float x, Float y );
+  public abstract boolean isInShape( double x, double y );
 
-  protected Boolean isInQuadrant( Float x, Float y )
+  protected boolean isInQuadrant( double x, double y )
   {
     if (x >= 0 && y >= 0 && this.quadrant == 1){
       return true;

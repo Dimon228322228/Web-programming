@@ -10,7 +10,7 @@ public class Graph{
     this.shapes = shapes;
   }
 
-  public Boolean isInGraph(Float x, Float y) {
+  public boolean isInGraph(double x, double y) {
     for (ShapeInterface shape : shapes) {
       if (shape.isInShape(x,y)) return true;
     }

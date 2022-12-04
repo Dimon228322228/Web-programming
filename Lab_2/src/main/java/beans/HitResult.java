@@ -10,12 +10,12 @@ import lombok.*;
 @Setter
 public class HitResult implements Serializable {
 
-    private Float x;
-    private Float y;
-    private Float r;
+    private Double x;
+    private Double y;
+    private Double r;
     private String currentTime;
     private String execTime;
-    private Boolean isHit;
+    private boolean hit;
 
     @Override
     public String toString() {
@@ -25,7 +25,7 @@ public class HitResult implements Serializable {
                 ", r=" + r +
                 ", currentTime='" + currentTime + '\'' +
                 ", execTime='" + execTime + '\'' +
-                ", isHit=" + isHit +
+                ", isHit=" + hit +
                 '}';
     }
 
@@ -34,9 +34,9 @@ public class HitResult implements Serializable {
         if (this == o) return true;
         if (!(o instanceof HitResult)) return false;
         HitResult hitResult = (HitResult) o;
-        return Float.compare(hitResult.getX(), getX()) == 0 &&
-               Float.compare(hitResult.getY(), getY()) == 0 &&
-               Float.compare(hitResult.getR(), getR()) == 0 &&
+        return Double.compare(hitResult.getX(), getX()) == 0 &&
+               Double.compare(hitResult.getY(), getY()) == 0 &&
+               Double.compare(hitResult.getR(), getR()) == 0 &&
                isHit() == hitResult.isHit() &&
                Objects.equals( getCurrentTime(), hitResult.getCurrentTime() ) &&
                Objects.equals( getExecTime(), hitResult.getExecTime() );

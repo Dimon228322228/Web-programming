@@ -1,9 +1,10 @@
 package servlets;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.WebServlet;
 import java.io.IOException;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public class ControllerServlet extends HttpServlet {
       Map<String, String[]> params = req.getParameterMap();
       if (params.get("y") != null && params.get("x") != null && params.get("r") != null) {
         getServletContext().getNamedDispatcher("AreaCheckServlet").forward(req, resp);
-      } elif ( params.get('clear') != null ) {
+      } else if ( params.get("clear") != null ) {
         getServletContext().getNamedDispatcher("ClearAllTable").forward(req, resp);
       } else { 
         getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);

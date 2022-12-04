@@ -1,23 +1,24 @@
 package servlets;
 
-import Validation;
 import beans.HitResult;
 import beans.HitResultContainer;
+import Shapes.Validation;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.WebServlet;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Optional;
 
-import static java.lang.Float.NaN;
+import com.google.gson.*;
 
-@WebServlet( name="AreaCheckServlet" value="/check" )
+@WebServlet( name="AreaCheckServlet", value="/check" )
 public class AreaCheckServlet extends HttpServlet {
 
   private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm:ss");
@@ -29,13 +30,13 @@ public class AreaCheckServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     long start = System.nanoTime();
-    Optional<Float> x = check_param( req.getParameter("x") );
-    Optional<Float> y = check_param( req.getParameter("y") );
-    Optional<Float> r = check_param( req.getParameter("r") );
+    Optional<Double> x = check_param( req.getParameter("x") );
+    Optional<Double> y = check_param( req.getParameter("y") );
+    Optional<Double> r = check_param( req.getParameter("r") );
     if ( x.isPresent() && y.isPresent() && r.isPresent() ) {
-      Float y_f = toFixed( y.get(), 7);
-      Float x_f = toFixed( x.get(), 7);
-      Float r_f = toFixed( r.get(), 7);
+      Double y_f = toFixed( y.get().toString(), 7);
+      Double x_f = toFixed( x.get().toString(), 7);
+      Double r_f = toFixed( r.get().toString(), 7);
       Boolean isHit = validator.isPointInShapes( x_f, y_f, r_f );
       String currTime = LocalDateTime.now().format(formatter);
       String execTime = String.format( Locale.getDefault(), "%.7f", (System.nanoTime() - start) * Math.pow(10, -9));
@@ -48,24 +49,28 @@ public class AreaCheckServlet extends HttpServlet {
       }
       tableRows.getHitResultContainer().add(hitResult);
       PrintWriter writer = resp.getWriter();
-      if ( req.getSession().getAttribute("needAllTable") ){
-        writer.print(json(tableRows));
+      Gson gson = new Gson();
+      String json;
+      if ( req.getSession().getAttribute("needAllTable").equals(true) ){
+        json = gson.toJson( tableRows.getHitResultContainer() );
+        writer.print(json);
       } else {
-        writer.print(json(hitResult));
+        json = gson.toJson( hitResult );
+        writer.print(json);
       }
     }
 
   }
 
-  private Optional<Float> check_param( String param ){
+  private Optional<Double> check_param( String param ){
     try{
-      return Optional.of(Float.parseFloat( param ));
+      return Optional.of(Double.parseDouble( param ));
     } catch ( NumberFormatException | NullPointerException e){
       return Optional.empty();
     } 
   }
 
-  private Float toFixed( String value, Integer number_after_dot){
-    return Float.valueOf( value.substring( 0, value.indexOf(".") + number_after_dot + 1) );
+  private Double toFixed( String value, Integer number_after_dot){
+    return Double.valueOf( value.substring( 0, value.indexOf(".") + number_after_dot + 1) );
   }
 }

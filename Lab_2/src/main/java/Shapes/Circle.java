@@ -2,16 +2,16 @@ package Shapes;
 
 public class Circle extends AbstractShape{
 
-  private Float radius;
+  private double radius;
 
-  public Circle( Integer quadrant, Float radius ) 
+  public Circle( Integer quadrant, double radius ) 
   {
     super(quadrant);
     this.radius = radius;
   }
 
   @Override
-  public Boolean isInShape(Float x, Float y)
+  public boolean isInShape( double x, double y )
   {
     return this.isInQuadrant(x, y) &&
             (( Math.pow( x, 2 ) + Math.pow( y, 2 ) ) <= Math.pow( this.radius, 2 ));

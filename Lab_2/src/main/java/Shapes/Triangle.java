@@ -1,11 +1,11 @@
-package Shape;
+package Shapes;
 public class Triangle extends AbstractShape{
 
-  private Float x;
-  private Float y;
-  private Boolean low_quadrant = false;
+  private double x;
+  private double y;
+  private boolean low_quadrant = false;
 
-  public Triangle( Integer quadrant, Float x, Float y ) 
+  public Triangle( Integer quadrant, double x, double y ) 
   {
     super(quadrant);
     this.x = x;
@@ -14,7 +14,7 @@ public class Triangle extends AbstractShape{
   }
 
   @Override
-  public Boolean isInShape(Float x, Float y)
+  public boolean isInShape(double x, double y)
   {
     if ( this.low_quadrant ){
       return this.isInQuadrant(x, y) && (y >= ( ( -this.y / this.x ) * x + this.y));

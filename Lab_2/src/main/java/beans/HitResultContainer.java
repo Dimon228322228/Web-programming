@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 public class HitResultContainer {
 
-    private List<EntryBean> hitResultContainer;
+    private List<HitResult> hitResultContainer;
 
     public HitResultContainer() {
         this.hitResultContainer = new ArrayList<>();
@@ -32,7 +32,7 @@ public class HitResultContainer {
     @Override
     public String toString() {
         return "HitResultContainer{" +
-                "getHitResultContainer=" + getHitResultContainer +
+                "getHitResultContainer=" + getHitResultContainer() +
                 '}';
     }
 }
