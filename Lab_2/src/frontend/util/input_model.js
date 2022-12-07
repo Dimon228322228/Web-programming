@@ -19,29 +19,13 @@ export class InputModel{
   }
 
   setRows( promise, callback ) {
-    promise.then(( resultTextHTML ) => {
-      const tableElement = document.createElement('table');
-      tableElement.innerHTML = resultTextHTML;
-      const valueRows = [];
-      const xRow = tableElement.querySelectorAll('.x_table_value');
-      const yRow = tableElement.querySelectorAll('.y_table_value');
-      const rRow = tableElement.querySelectorAll('.r_table_value');
-      const isHitRow = tableElement.querySelectorAll('.inShape_table_value');
-      const current_time_table_value = tableElement.querySelectorAll('.current_time_table_value');
-      const execution_time_table_value = tableElement.querySelectorAll('.execution_time_table_value');
-
-      for (let i = 0; i < tableElement.rows.length; i++) {
-          valueRows.push(new HitResult(
-              (+(xRow[i]).innerText.trim()).toFixed(2),
-              (+(yRow[i]).innerText.trim()).toFixed(2),
-              (+(rRow[i]).innerText.trim()).toFixed(2),
-              (isHitRow[i]).innerText.trim() === "true",
-              current_time_table_value[i].innerText.trim(),
-              execution_time_table_value[i].innerText.trim()
-          ));
-      }
-      table.set( valueRows );
-      tableElement.remove();
+    promise.then(( jsonData ) => {
+      jsonData.forEach( item => {
+        const hitResult = new HitResult(item["x"], item["y"], item["r"], item["hit"], item["currentTime"], item["execTime"]);
+        const table_cur = get( table );
+        table_cur.push( hitResult );
+        table.set( table_cur );
+      });
     }).then(() => {
       callback( get(table) );
     });

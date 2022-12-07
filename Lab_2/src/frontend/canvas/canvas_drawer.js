@@ -81,7 +81,7 @@ export class canvasDrawer{
   drawRectangle( unitRSizePx ){
     let path = new Path2D();
     this.ctx.fillStyle = 'rgba(240,240,60,.4)';
-    path.rect( this.width / 2, this.height / 2, unitRSizePx / 2, unitRSizePx );
+    path.rect( this.width / 2 - unitRSizePx / 2, this.height / 2, unitRSizePx / 2, unitRSizePx );
     this.ctx.fill(path);
   }
 
@@ -89,8 +89,8 @@ export class canvasDrawer{
     let path = new Path2D();  
     this.ctx.fillStyle = 'rgba(240,240,60,.4)';
     path.moveTo( this.width / 2, this.height / 2 );
-    path.lineTo( this.width / 2, (this.height / 2) + unitRSizePx );
-    path.lineTo( (this.width / 2) - (unitRSizePx / 2), this.height / 2 );
+    path.lineTo( this.width / 2, (this.height / 2) - unitRSizePx / 2 );
+    path.lineTo( (this.width / 2) + unitRSizePx, this.height / 2 );
     this.ctx.fill( path );
   }
 

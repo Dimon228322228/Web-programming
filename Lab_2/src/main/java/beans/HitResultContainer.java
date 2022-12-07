@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import lombok.*;
+import java.util.Collection;
+
 
 @AllArgsConstructor
 @Getter
@@ -14,6 +16,13 @@ public class HitResultContainer {
 
     public HitResultContainer() {
         this.hitResultContainer = new ArrayList<>();
+    }
+
+    public Collection<HitResult> getLastElementInConainer(){
+        if ( hitResultContainer != null && hitResultContainer.size() > 0 )
+            return new ArrayList<HitResult>( List.of( this.hitResultContainer.get( this.hitResultContainer.size() - 1 ) ) );
+        else
+            return new ArrayList<HitResult>();
     }
 
     @Override

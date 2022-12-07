@@ -1,25 +1,28 @@
 export class RequestHandler {
   static async getData( params ){
-    const API_URL = "./backend/index.php";
     const map = new Map();
     const URLParams = new URLSearchParams({
       x: params.get('x'),
       y: params.get('y'),
       r: params.get('r')
     });
-    return fetch( API_URL + "?" + URLParams).then( response => {
-      if (response.ok) return response.text()} );
+    return fetch( "controller?" + URLParams).then( response => {
+      if (response.ok) return response.json()} );
   }
 
   static async get_table_without_request(){
-    const API_URL = "./backend/get_requests.php";
-    return fetch( API_URL ).then( response => {
-      if (response.ok) return response.text()} );
+    const URLParams = new URLSearchParams({
+      getAllData: 1,
+    });
+    return fetch( "controller?" + URLParams ).then( response => {
+      if (response.ok) return response.json()} );
   }
 
 
   static async resetData(){
-    const API_URL = "./backend/reset_session.php";
-    const response = await fetch( API_URL );
+    const URLParams = new URLSearchParams({
+      clear: 1,
+    });
+    const response = await fetch( "controller?" + URLParams );
   }
 }

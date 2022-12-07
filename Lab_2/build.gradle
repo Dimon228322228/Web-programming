@@ -10,10 +10,6 @@ repositories {
     mavenCentral()
 }
 
-repositories {
-    mavenCentral()
-}
-
 ext {
     junitVersion = '5.8.2'
 }
@@ -37,7 +33,6 @@ dependencies {
 
     // providedRuntime - not packaged in war (provided by container)
     providedRuntime('jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.1.0')
-    providedRuntime('org.hibernate.orm:hibernate-core:6.0.2.Final')
 
     providedCompile('org.projectlombok:lombok:1.18.24')
     annotationProcessor('org.projectlombok:lombok:1.18.24')
