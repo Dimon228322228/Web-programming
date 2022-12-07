@@ -1,5 +1,4 @@
 import { getHeightText } from "../util/calc_height.js";
-import { Vector } from "../util/vector.js";
 
 export class canvasDrawer{
 

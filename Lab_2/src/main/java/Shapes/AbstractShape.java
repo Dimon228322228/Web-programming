@@ -18,8 +18,6 @@ public abstract class AbstractShape implements ShapeInterface {
       return true;
     } else if (x <= 0 && y <= 0 && this.quadrant == 3){
       return true;
-    } else if (x >= 0 && y <= 0 && this.quadrant == 4){
-      return true;
-    } else return false;
+    } else return x >= 0 && y <= 0 && this.quadrant == 4;
   }
 }

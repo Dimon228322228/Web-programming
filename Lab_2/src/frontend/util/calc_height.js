@@ -3,7 +3,7 @@ import jQuery from "./jquery.js"
 export function getHeightText( font ){
 
     let text = jQuery('<span>Hg</span>').css({ fontFamily: font });
-    let block = jQuery('<div style="display: inline-block; width: 1px; height: 0px;"></div>');
+    let block = jQuery('<div style="display: inline-block; width: 1px; height: 0;"></div>');
   
     let div = jQuery('<div></div>');
     div.append(text, block);

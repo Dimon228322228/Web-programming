@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Validation {
-  private Graph graph;
+  private final Graph graph;
 
   public Validation(){
     this.graph = new Graph( createShapes() );

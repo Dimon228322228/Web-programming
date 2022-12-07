@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-import java.util.List;
 import java.util.Optional;
 
 @WebServlet( name="AreaCheckServlet" )
@@ -21,9 +20,6 @@ public class AreaCheckServlet extends HttpServlet {
 
   private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy hh:mm:ss");
   private final Validation validator = new Validation();
-
-    @Override
-  public void init() throws ServletException { }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,8 +30,8 @@ public class AreaCheckServlet extends HttpServlet {
     if ( x.isPresent() && y.isPresent() && r.isPresent() ) {
       Double y_f = toFixed( y.get().toString(), 5);
       Double x_f = toFixed( x.get().toString(), 5);
-      Double r_f = toFixed( r.get().toString(), 5);
-      Boolean isHit = validator.isPointInShapes( x_f, y_f, r_f );
+      Double r_f = toFixed( r.get().toString(), 0);
+      boolean isHit = validator.isPointInShapes( x_f, y_f, r_f );
       String currTime = LocalDateTime.now().format(formatter);
       String execTime = String.format( Locale.getDefault(), "%.7f", (System.nanoTime() - start) * Math.pow(10, -9));
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Graph{
   
-  private ArrayList<ShapeInterface> shapes;
+  private final ArrayList<ShapeInterface> shapes;
 
   public Graph( ArrayList<ShapeInterface> shapes ) {
     this.shapes = shapes;

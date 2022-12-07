@@ -32,8 +32,7 @@ public class HitResult implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HitResult)) return false;
-        HitResult hitResult = (HitResult) o;
+        if (!(o instanceof HitResult hitResult)) return false;
         return Double.compare(hitResult.getX(), getX()) == 0 &&
                Double.compare(hitResult.getY(), getY()) == 0 &&
                Double.compare(hitResult.getR(), getR()) == 0 &&

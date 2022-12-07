@@ -2,7 +2,7 @@ package Shapes;
 
 public class Circle extends AbstractShape{
 
-  private double radius;
+  private final double radius;
 
   public Circle( Integer quadrant, double radius ) 
   {

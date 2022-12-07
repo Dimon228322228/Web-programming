@@ -1,8 +1,8 @@
 package Shapes;
 public class Triangle extends AbstractShape{
 
-  private double x;
-  private double y;
+  private final double x;
+  private final double y;
   private boolean low_quadrant = false;
 
   public Triangle( Integer quadrant, double x, double y ) 

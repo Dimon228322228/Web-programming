@@ -1,8 +1,8 @@
 package Shapes;
 public class Square extends AbstractShape{
 
-  private double x;
-  private double y;
+  private final double x;
+  private final double y;
   private boolean low_quadrant = false;
 
   public Square( Integer quadrant, double x, double y ) {
@@ -32,5 +32,4 @@ public class Square extends AbstractShape{
       }
     }
   }
-  
 }
