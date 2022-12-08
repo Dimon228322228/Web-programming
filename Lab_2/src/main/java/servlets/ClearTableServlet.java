@@ -14,7 +14,8 @@ public class ClearTableServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         HitResultContainer tableRows = (HitResultContainer) req.getSession().getAttribute("tableRows");
         if (tableRows != null) {
-            tableRows.getHitResultContainer().clear();
+            tableRows.clear();
+            req.getSession().setAttribute("tableRows", tableRows);
         }
     }
 }

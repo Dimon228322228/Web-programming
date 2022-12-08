@@ -39,9 +39,9 @@ public class AreaCheckServlet extends HttpServlet {
       HitResultContainer tableRows = (HitResultContainer) req.getSession().getAttribute("tableRows");
       if (tableRows == null) {
           tableRows = new HitResultContainer();
-          req.getSession().setAttribute("tableRows", tableRows);
       }
-      tableRows.getHitResultContainer().add(hitResult);
+      tableRows.add(hitResult);
+      req.getSession().setAttribute("tableRows", tableRows);
       getServletContext().getNamedDispatcher("ResponseServlet").forward(req, resp);
     }
 
