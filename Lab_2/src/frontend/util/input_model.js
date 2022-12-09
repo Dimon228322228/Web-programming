@@ -20,12 +20,12 @@ export class InputModel{
 
   setRows( promise, callback ) {
     promise.then(( jsonData ) => {
+      const table_cur = get( table );
       jsonData.forEach( item => {
         const hitResult = new HitResult(item["x"], item["y"], item["r"], item["hit"], item["currentTime"], item["execTime"]);
-        const table_cur = get( table );
         table_cur.push( hitResult );
-        table.set( table_cur );
       });
+      table.set( table_cur );
     }).then(() => {
       callback( get(table) );
     });

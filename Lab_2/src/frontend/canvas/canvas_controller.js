@@ -48,6 +48,7 @@ export class CanvasController{
 
   update_scale(){
     this.canvasView.unitR = this._inputModel.r;
+    this.canvasView.drawBackground();
     this.redraw_canvas( this._inputModel.table );
   }
 

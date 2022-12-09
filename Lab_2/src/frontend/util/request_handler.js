@@ -11,7 +11,7 @@ export class RequestHandler {
 
   static async get_table_without_request(){
     const URLParams = new URLSearchParams({
-      getAllData: true,
+      getAllData: 1,
     });
     return fetch( "controller?" + URLParams ).then( response => {
       if (response.ok) return response.json()} );

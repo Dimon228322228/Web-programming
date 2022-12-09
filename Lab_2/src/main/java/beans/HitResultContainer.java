@@ -3,6 +3,7 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collection;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import lombok.*;
 
@@ -10,10 +11,10 @@ import lombok.*;
 @Data
 public class HitResultContainer {
 
-    private List<HitResult> hitResultContainer;
+    private CopyOnWriteArrayList<HitResult> hitResultContainer;
 
     public HitResultContainer() {
-        this.hitResultContainer = new ArrayList<>();
+        this.hitResultContainer = new CopyOnWriteArrayList<>();
     }
 
     public void add( HitResult hitResult ){

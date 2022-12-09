@@ -18,6 +18,10 @@ export class CanvasView{
     this.canvasDrawer.drawBackground( this.canvasDimention / this.intervalsNumber, this.unitR );
   }
 
+  drawBackground(){
+    this.canvasDrawer.drawBackground( this.canvasDimention/this.intervalsNumber, this.unitR );
+  }
+
   drawTip( dot ){
     let vector = new Vector( dot.x, dot.y);
     vector.fromUnitsToPx(this.canvasDimention / this.intervalsNumber, this.canvasDimention / 2, this.unitR);
@@ -30,8 +34,19 @@ export class CanvasView{
     vector.fromUnitsToPx( this.canvasDimention / this.intervalsNumber,
               this.canvasDimention / 2, this.unitR );
     let dot;
-    if ( hit_results.isHit ) dot = new Dot( vector.x, vector.y, "green" );
-      else dot = new Dot( vector.x, vector.y, "red" );
+    if ( hit_results.isHit ){
+      if ( hit_results.r == this.unitR ){
+        dot = new Dot( vector.x, vector.y, "rgba(0, 128, 0, 1)" );
+      } else {
+        dot = new Dot( vector.x, vector.y, "rgba(0, 0, 0, 0.035)" );
+      }
+    } else {
+      if ( hit_results.r == this.unitR ){
+        dot = new Dot( vector.x, vector.y, "rgba(255, 0, 0, 1)" );
+      } else {
+        dot = new Dot( vector.x, vector.y, "rgba(0, 0, 0, 0.025)" );
+      }
+    } 
     this.canvasDrawer.drawPoint( dot );
   }
 

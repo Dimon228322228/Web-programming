@@ -26,7 +26,7 @@ public class ResponseServlet extends HttpServlet {
     PrintWriter writer = resp.getWriter();
     Gson gson = new Gson();
     String json;
-    if ( !Objects.equals(req.getParameter("getAllData"), null) && Boolean.getBoolean(req.getParameter("getAllData")) ){
+    if ( !Objects.equals(req.getParameter("getAllData"), null) && Objects.equals(req.getParameter("getAllData"), "1") ){
       Collection<HitResult> results = tableRows.getHitResultContainer();
       json = gson.toJson( results );
     } else {
