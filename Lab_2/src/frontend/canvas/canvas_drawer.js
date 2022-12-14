@@ -32,15 +32,15 @@ export class canvasDrawer{
     this.tip_ctx.fillText(` X: ${dot.x}; Y: ${dot.y}; R: ${dot.r}; `, 5, 20);
   }
 
-  clearCanvas() {
-    this.ctx.clearRect(0, 0, this.width, this.height);
+  clearCanvas( unitRSizePx, unitR ) {
+    this.ctx.clearRect(-unitRSizePx + this.canvas.width/2, -unitRSizePx + this.canvas.width/2, unitRSizePx + this.canvas.width/2, unitRSizePx + this.canvas.width/2);
   }
 
   drawBackground( unitRSizePx, unitR ) {
     this.drawAxises();
-    this.drawLeftTopSquareCircle( unitRSizePx );
-    this.drawRectangle( unitRSizePx );
-    this.drawTriangle( unitRSizePx );
+    this.drawLeftTopSquareCircle( unitRSizePx, unitR );
+    this.drawRectangle( unitRSizePx, unitR );
+    this.drawTriangle( unitRSizePx, unitR );
     this.drawText( unitRSizePx, unitR );
   }
 
@@ -68,28 +68,28 @@ export class canvasDrawer{
     this.ctx.fill(axis_triangles);
   }
 
-  drawLeftTopSquareCircle( unitRSizePx ){
+  drawLeftTopSquareCircle( unitRSizePx, unitR ){
     this.ctx.fillStyle = 'rgba(240,240,60,.4)';
     let path = new Path2D();
     path.moveTo( this.width / 2, this.height / 2 );
-    path.arc( this.width / 2, this.height / 2, unitRSizePx / 2, Math.PI, 3*Math.PI/2, false );
+    path.arc( this.width / 2, this.height / 2, unitRSizePx / 2 / unitR, Math.PI, 3*Math.PI/2, false );
     path.closePath();
     this.ctx.fill(path); 
   }
 
-  drawRectangle( unitRSizePx ){
+  drawRectangle( unitRSizePx, unitR ){
     let path = new Path2D();
     this.ctx.fillStyle = 'rgba(240,240,60,.4)';
-    path.rect( this.width / 2 - unitRSizePx / 2, this.height / 2, unitRSizePx / 2, unitRSizePx );
+    path.rect( this.width / 2 - unitRSizePx / 2 / unitR, this.height / 2, unitRSizePx / 2 / unitR, unitRSizePx/unitR );
     this.ctx.fill(path);
   }
 
-  drawTriangle( unitRSizePx ){
+  drawTriangle( unitRSizePx, unitR ){
     let path = new Path2D();  
     this.ctx.fillStyle = 'rgba(240,240,60,.4)';
     path.moveTo( this.width / 2, this.height / 2 );
-    path.lineTo( this.width / 2, (this.height / 2) - unitRSizePx / 2 );
-    path.lineTo( (this.width / 2) + unitRSizePx, this.height / 2 );
+    path.lineTo( this.width / 2, (this.height / 2) - unitRSizePx / 2 / unitR );
+    path.lineTo( (this.width / 2) + unitRSizePx / unitR, this.height / 2 );
     this.ctx.fill( path );
   }
 
@@ -97,22 +97,23 @@ export class canvasDrawer{
     this.ctx.font = "14px sans-serif";
     this.ctx.fillStyle = '#000';
     let dashes = new Path2D();
-    dashes.moveTo( (this.width / 2) - (unitRSizePx / 2), (this.height / 2) + 5 );
-    dashes.lineTo( (this.width / 2) - (unitRSizePx / 2), (this.height / 2) - 5 ); 
-    dashes.moveTo( (this.width / 2) - unitRSizePx, (this.height / 2) + 5 );
-    dashes.lineTo( (this.width / 2) - unitRSizePx, (this.height / 2) - 5 );
-    dashes.moveTo( (this.width / 2) + (unitRSizePx / 2), (this.height / 2) + 5 );
-    dashes.lineTo( (this.width / 2) + (unitRSizePx / 2), (this.height / 2) - 5 ); 
-    dashes.moveTo( (this.width / 2) + unitRSizePx, (this.height / 2) + 5 );
-    dashes.lineTo( (this.width / 2) + unitRSizePx, (this.height / 2) - 5 );
-    dashes.moveTo( (this.width / 2) + 5, (this.height / 2) + (unitRSizePx / 2) );
-    dashes.lineTo( (this.width / 2) - 5, (this.height / 2) + (unitRSizePx / 2) ); 
-    dashes.moveTo( (this.width / 2) + 5, (this.height / 2) + unitRSizePx );
-    dashes.lineTo( (this.width / 2) - 5, (this.height / 2) + unitRSizePx );
-    dashes.moveTo( (this.width / 2) + 5, (this.height / 2) - (unitRSizePx / 2) );
-    dashes.lineTo( (this.width / 2) - 5, (this.height / 2) - (unitRSizePx / 2) ); 
-    dashes.moveTo( (this.width / 2) + 5, (this.height / 2) - unitRSizePx );
-    dashes.lineTo( (this.width / 2) - 5, (this.height / 2) - unitRSizePx );
+    let new_unitRSizePx = unitRSizePx/unitR;
+    dashes.moveTo( (this.width / 2) - (new_unitRSizePx / 2), (this.height / 2) + 5 );
+    dashes.lineTo( (this.width / 2) - (new_unitRSizePx / 2), (this.height / 2) - 5 ); 
+    dashes.moveTo( (this.width / 2) - new_unitRSizePx, (this.height / 2) + 5 );
+    dashes.lineTo( (this.width / 2) - new_unitRSizePx, (this.height / 2) - 5 );
+    dashes.moveTo( (this.width / 2) + (new_unitRSizePx / 2), (this.height / 2) + 5 );
+    dashes.lineTo( (this.width / 2) + (new_unitRSizePx / 2), (this.height / 2) - 5 ); 
+    dashes.moveTo( (this.width / 2) + new_unitRSizePx, (this.height / 2) + 5 );
+    dashes.lineTo( (this.width / 2) + new_unitRSizePx, (this.height / 2) - 5 );
+    dashes.moveTo( (this.width / 2) + 5, (this.height / 2) + (new_unitRSizePx / 2) );
+    dashes.lineTo( (this.width / 2) - 5, (this.height / 2) + (new_unitRSizePx / 2) ); 
+    dashes.moveTo( (this.width / 2) + 5, (this.height / 2) + new_unitRSizePx );
+    dashes.lineTo( (this.width / 2) - 5, (this.height / 2) + new_unitRSizePx );
+    dashes.moveTo( (this.width / 2) + 5, (this.height / 2) - (new_unitRSizePx / 2) );
+    dashes.lineTo( (this.width / 2) - 5, (this.height / 2) - (new_unitRSizePx / 2) ); 
+    dashes.moveTo( (this.width / 2) + 5, (this.height / 2) - new_unitRSizePx );
+    dashes.lineTo( (this.width / 2) - 5, (this.height / 2) - new_unitRSizePx );
     this.ctx.stroke(dashes);
 
     let unsign_strR = `${ unitR }`;
@@ -122,23 +123,23 @@ export class canvasDrawer{
     let height_text = getHeightText(unsign_strR).height;
     this.ctx.textBaseLine = 'top';
     this.ctx.textAlign = 'center';
-    this.ctx.fillText( half_sign_strR, (this.width / 2) - (unitRSizePx / 2), (this.height / 2) - height_text / 2 - 1);
-    this.ctx.fillText( sign_strR, (this.width / 2) - unitRSizePx, (this.height / 2) - height_text / 2 - 1 );
-    this.ctx.fillText( half_unsign_strR, (this.width / 2) + (unitRSizePx / 2), (this.height / 2) - height_text / 2 - 1 );
-    this.ctx.fillText( unsign_strR, (this.width / 2) + unitRSizePx , (this.height / 2) - height_text / 2 - 1 );
+    this.ctx.fillText( half_sign_strR, (this.width / 2) - (new_unitRSizePx / 2), (this.height / 2) - height_text / 2 - 1);
+    this.ctx.fillText( sign_strR, (this.width / 2) - new_unitRSizePx, (this.height / 2) - height_text / 2 - 1 );
+    this.ctx.fillText( half_unsign_strR, (this.width / 2) + (new_unitRSizePx / 2), (this.height / 2) - height_text / 2 - 1 );
+    this.ctx.fillText( unsign_strR, (this.width / 2) + new_unitRSizePx , (this.height / 2) - height_text / 2 - 1 );
     this.ctx.fillText( half_sign_strR,
         (this.width / 2) + this.ctx.measureText(half_sign_strR).width,
-        (this.height / 2) + (unitRSizePx / 2) + (height_text / 4) );
+        (this.height / 2) + (new_unitRSizePx / 2) + (height_text / 4) );
     this.ctx.fillText( sign_strR,
         (this.width / 2) + this.ctx.measureText(sign_strR).width * 1.2,
-        (this.height / 2) + unitRSizePx + (height_text / 4) );
+        (this.height / 2) + new_unitRSizePx + (height_text / 4) );
     this.ctx.fillText( half_unsign_strR,
         (this.width / 2) + this.ctx.measureText(half_unsign_strR + " ").width,
-        (this.height / 2) - (unitRSizePx / 2) + (height_text / 4) );
+        (this.height / 2) - (new_unitRSizePx / 2) + (height_text / 4) );
     this.ctx.fillText( unsign_strR,
         (this.width / 2) + this.ctx.measureText(unsign_strR + " ").width,
-        (this.height / 2) - unitRSizePx + (height_text / 4) );
-    this.ctx.fillText( "X",  this.width - this.ctx.measureText("X").width / 2, (this.height / 2) - 10 );
-    this.ctx.fillText( "Y", (this.width / 2) + this.ctx.measureText("X").width, 10 );    
+        (this.height / 2) - new_unitRSizePx + (height_text / 4) );
+    this.ctx.fillText( "X",  this.width - this.ctx.measureText("X").width / 2, (this.height / 2) + 20 );
+    this.ctx.fillText( "Y", (this.width / 2) - this.ctx.measureText("X").width, 12 );    
   }
 }

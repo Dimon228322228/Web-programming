@@ -37,7 +37,6 @@ export class CanvasController{
   _redraw_canvas( canvasView, table ){
     canvasView.clear();
     let callback = canvasView.addPoint.bind(canvasView);
-    console.log( table );
     table.forEach(item => { callback(item) });
   }
 

@@ -5,11 +5,11 @@
   let canvas_controller = getContext('canvas').canvas_controller;
 
   $: tip = false;
-  $: values = [{ v: 1, check: true},
+  $: values = [{ v: 1, check: false},
                { v: 2, check: false},
                { v: 3, check: false},
                { v: 4, check: false},
-               { v: 5, check: false}];
+               { v: 5, check: true}];
 
   function update( x ){
     values.forEach( item => { item.check = x == item.v ? true : false } );

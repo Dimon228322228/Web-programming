@@ -18,16 +18,17 @@ export class Vector{
   }
   
   scaleToPx(unitRSizePx, unitR){
-    this._x *= unitRSizePx / unitR;
-    this._y *= unitRSizePx / unitR;
+    this._x *= unitRSizePx / unitR / unitR;
+    this._y *= unitRSizePx / unitR / unitR;
   }
 
   scaleFromPx(unitRSizePx, unitR){
     this._x /= unitRSizePx
     this._x *= unitR;
+    this._x *= unitR;
     this._y /= unitRSizePx;
     this._y *= unitR;
-
+    this._y *= unitR;
   }
 
   shiftToAxisCenter(offset){

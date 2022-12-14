@@ -8,13 +8,13 @@ export class CanvasView{
     this._tip_canvas = tip_canvas;
     this.canvasDrawer = new canvasDrawer( canvas, tip_canvas );
     this._canvasDimention = canvas.height;
-    this._intervalsNumber = 3;
+    this._intervalsNumber = 1;
     this._unitR = unitR;
     this.canvasDrawer.drawBackground( this.canvasDimention/this.intervalsNumber, unitR );
   }
 
   clear(){
-    this.canvasDrawer.clearCanvas();
+    this.canvasDrawer.clearCanvas( this.canvasDimention / this.intervalsNumber, this.unitR );
     this.canvasDrawer.drawBackground( this.canvasDimention / this.intervalsNumber, this.unitR );
   }
 
@@ -38,13 +38,13 @@ export class CanvasView{
       if ( hit_results.r == this.unitR ){
         dot = new Dot( vector.x, vector.y, "rgba(0, 128, 0, 1)" );
       } else {
-        dot = new Dot( vector.x, vector.y, "rgba(0, 0, 0, 0.035)" );
+        dot = new Dot( vector.x, vector.y, "rgba(0, 0, 0, 0.05)" );
       }
     } else {
       if ( hit_results.r == this.unitR ){
         dot = new Dot( vector.x, vector.y, "rgba(255, 0, 0, 1)" );
       } else {
-        dot = new Dot( vector.x, vector.y, "rgba(0, 0, 0, 0.025)" );
+        dot = new Dot( vector.x, vector.y, "rgba(0, 0, 0, 0.05)" );
       }
     } 
     this.canvasDrawer.drawPoint( dot );
