@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'Dimon228322228'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.8.2'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+
+    testImplementation 'junit:junit:4.11'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    providedCompile 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+    implementation 'jakarta.faces:jakarta.faces-api:4.0.1'
+    implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
+    implementation 'jakarta.enterprise:jakarta.enterprise.cdi-api:4.0.1'
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+
+    implementation 'org.primefaces:primefaces:12.0.0:jakarta'
+
+    implementation 'org.postgresql:postgresql:42.5.0'
+
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.0'
+
+    // providedRuntime - not packaged in war (provided by container)
+    implementation 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.1.0'
+
+    
+    implementation 'com.google.code.gson:gson:2.10'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.register('deploy') {
+    dependsOn 'build'
+    doLast {
+        exec {
+            workingDir '.'
+            commandLine 'sh', '-c', 'scp -P 2222 build/libs/webLab-1.0.war s336698@se.ifmo.ru:~/wildfly-27.0.0.Final/standalone/deployments'
+        }
+    }
+}
