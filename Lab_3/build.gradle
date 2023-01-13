@@ -1,12 +1,13 @@
 plugins {
-    id 'java'
     id 'war'
+    id 'java'
 }
 
 group 'Dimon228322228'
 version '1.0'
 
 repositories {
+    mavenCentral()
     mavenCentral()
 }
 
@@ -37,11 +38,7 @@ dependencies {
 
     implementation 'org.postgresql:postgresql:42.5.0'
 
-    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
-    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.0'
-
     // providedRuntime - not packaged in war (provided by container)
-    implementation 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.1.0'
 
     
     implementation 'com.google.code.gson:gson:2.10'
@@ -56,7 +53,11 @@ tasks.register('deploy') {
     doLast {
         exec {
             workingDir '.'
-            commandLine 'sh', '-c', 'scp -P 2222 build/libs/webLab-1.0.war s336698@se.ifmo.ru:~/wildfly-27.0.0.Final/standalone/deployments'
+            commandLine 'sh', '-c', 'scp build/libs/webLab-1.0.war helios:~/wildfly-27.0.0.Final/standalone/deployments'
+        }
+        exec {
+            workingDir '.'
+            commandLine 'sh', '-c', 'cp build/libs/webLab-1.0.war ./wildfly-27.0.0.Final/standalone/deployments/'
         }
     }
 }
