@@ -1,35 +1,35 @@
-main {
+.main {
   text-align: center;	
   max-width: 240px;
   margin: 0 auto;
   background-color: burlywood;
 }
-main .main_content{
+.main .main_content{
     display: flex;
     justify-content: space-evenly;
 }
-main .right_side .input_data{
+.main .right_side .input_data{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
 }
-main .right_side .input_data .x_and_r{
+.main .right_side .input_data .x_and_r{
           display: flex;
           justify-content: center;
           align-items: center;
           margin: 20px 0;          
 }
-main .right_side .input_data .x{
+.main .right_side .input_data .x{
   margin: 0 10px;
 }
-main .right_side .input_data .r{
+.main .right_side .input_data .r{
   margin: 0 10px;
 }
-main .right_side .input_data .y{
+.main .right_side .input_data .y{
   margin-bottom: 20px;
 }
-main .right_side .input_data .buttons{
+.main .right_side .input_data .buttons{
   display: flex;
   justify-content: center;
   align-items: center;

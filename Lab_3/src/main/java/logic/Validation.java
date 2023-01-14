@@ -14,8 +14,8 @@ public class Validation {
   }
 
   private ArrayList<ShapeInterface> createShapes() {
-    Circle circle = new Circle(2, 0.5);
-    Square square = new Square(3, -0.5, -1);
+    Circle circle = new Circle(4, 1);
+    Square square = new Square(2, -1, 0.5);
     Triangle triangle = new Triangle(1, 1, 0.5);
     return new ArrayList<>( List.of(circle, square, triangle) );
   }

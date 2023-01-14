@@ -6,8 +6,9 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>java:/PostgresDS2</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <class>org.eclipse.persistence.jpa.example.inventory.model.AbstractDao</class>
         <properties>
-            
+            <property name="eclipselink.deploy-on-startup" value="create-or-extend-tables"/>
         </properties>
     </persistence-unit>
 </persistence>

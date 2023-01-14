@@ -12,31 +12,40 @@
   <h:outputStylesheet library="css" name="main.css"/>
 </h:head>
 <h:body>
+  <div class="main">
   <ui:include src="./WEB-INF/templates/header.xhtml"/>
   <div class="main_content">
-    <div>
-      <%-- canvas --%>
+    <div class="canvas">
+      
     </div>
     <div class="right_side">
+      <div class="return_to_index_button">
+        <h:form>
+          <h:commandButton action="toIndex" value="toIndex"></h:commandButton>
+        </h:form>
+      </div>
       <div class="input_data">
         <div class="x_and_r">
           <div class="r">
-            <%-- input r --%>						
+						<ui:include src="./WEB-INF/templates/inputR.xhtml"/>
           </div>
           <div class="x">
-            <%-- input x --%>
+            <ui:include src="./WEB-INF/templates/inputX.xhtml"/>
           </div>
         </div>
         <div class="y">
-          <%-- input y --%>
+            <ui:include src="./WEB-INF/templates/inputY.xhtml"/>
         </div>
         <div class="buttons">
           <h:commandLink action="submit" actionListener="#" value="Отправить"></h:commandLink>
           <h:commandLink action="reset" actionListener="#" value="Сбросить"></h:commandLink>
         </div>
       </div>
-      <%-- Table --%>
+      <div class="history">
+        <ui:include src="./WEB-INF/templates/history.xhtml"/>
+      </div>
     </div>
   </div>
+</div>
 </h:body>
 </html>

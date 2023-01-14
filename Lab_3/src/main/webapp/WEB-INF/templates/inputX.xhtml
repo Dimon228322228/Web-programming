@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head>
+  
+</h:head>
+<h:body>
+  <ui:composition>
+    <p:outputLabel for="X" styleClass="block">Input x coordinate</p:outputLabel>
+    <p:inputText id="X" value="#{inputBean.x}" styleClass="block"/>
+    <small class="block">Enter x coordinate which begger then -5 and smaller then 3.</small>
+  </ui:composition>
+</h:body>
+</html>
